@@ -10,6 +10,7 @@ const transporter = nodemailer.createTransport({
 });
 
 function sendMail(toEmail, subject, content) {
+  console.log("email");
   const mailOption = {
     from: "ppcupcs@gmail.com",
     to: toEmail,
@@ -17,15 +18,13 @@ function sendMail(toEmail, subject, content) {
     html: content,
   };
 
-  transporter.sendMail;
-  mailOption,
-    (error, info) => {
-      if (error) {
-        console.log("error occurred", error);
-      } else {
-        console.log("Email sent:", info.response);
-      }
-    };
+  transporter.sendMail(mailOption, (error, info) => {
+    if (error) {
+      console.log("error occurred", error);
+    } else {
+      console.log("Email sent:", info.response);
+    }
+  });
 }
 
 module.exports = { sendMail };
